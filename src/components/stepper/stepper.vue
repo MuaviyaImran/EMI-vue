@@ -18,11 +18,12 @@
           }"
         >
           <div
-            class="flex items-center justify-center w-10 h-10 rounded-full shrink-0 border-secondary-light border-2 mx-2"
+            class="flex items-center justify-center w-10 h-10 rounded-full shrink-0 border-2 mx-2 cursor-pointer"
             :class="{
               'border-primary': index <= step,
-              'border-[#808080]': index > step,
+              'border-[#808080] ': index > step,
             }"
+            @click="handleChangeForm(index)"
           >
             <span
               :class="{
@@ -81,6 +82,10 @@ const { steps, forms, submitAction } = defineProps([
 ]);
 const formAction = () => {
   if (step.value !== steps.length - 1) return step.value++;
+  submitAction();
+};
+const handleChangeForm = (index) => {
+  if (step.value !== index) return (step.value = index);
   submitAction();
 };
 </script>
