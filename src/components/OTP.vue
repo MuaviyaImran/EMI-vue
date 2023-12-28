@@ -144,11 +144,7 @@ const emitCode = () => {
       />
     </div>
   </div>
-  <div class="flex justify-end">
-    <BaseButton @click="emitCode" type="primary" variant="filled">
-      <template #text>Submit</template>
-    </BaseButton>
-  </div>
+  
 </template>
 
 <style scoped>
