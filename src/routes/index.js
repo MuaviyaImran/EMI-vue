@@ -1,5 +1,5 @@
 import Header from "../views/header.vue";
-import SideBar from "../views/sidebar.vue";
+import SideBar from "../views/baseSidebar.vue";
 import Stepper from "../views/stepper.vue";
 import Dropdown from "../views/dropdown.vue";
 import OTP from "../views/otp.vue";
