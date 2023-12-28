@@ -1,6 +1,6 @@
 <template>
-    <requiredDocumentTable />
+  <RequiredDocumentTable />
 </template>
 <script setup>
-import requiredDocumentTable from "../components/RequiredDocumentTable.vue"
+import RequiredDocumentTable from "../components/RequiredDocumentTable.vue";
 </script>
