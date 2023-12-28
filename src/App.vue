@@ -81,8 +81,8 @@
 
 <script setup>
 import { ref } from "vue";
-import BaseSnackBar from "./components/BaseSnackBar.vue";
-import BaseButton from "./components/base-button.vue";
+import BaseSnackBar from "./components/baseSnackBar.vue";
+import BaseButton from "./components/baseButton.vue";
 
 const showSnackbar = ref(false);
 const handleSnackbarClick = () => {
