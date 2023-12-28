@@ -1,9 +1,9 @@
 <template>
-  <SideBar :sidebarLinks="clientSidebarData"></SideBar>
-  <SideBar :sidebarLinks="complianceSidebarData"></SideBar>
+  <BaseSideBar :sidebarLinks="clientSidebarData"/>
+  <BaseSideBar :sidebarLinks="complianceSidebarData"/>
 </template>
 <script setup>
-import SideBar from "../components/sidebar.vue";
+import BaseSideBar from "../components/BaseSideBar.vue";
 import clientSidebarData from "../data/clientSidebarData";
 import complianceSidebarData from "../data/complianceSidebarData";
 </script>

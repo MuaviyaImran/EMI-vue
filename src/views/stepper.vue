@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mx-auto my-0 max-w-[1200px] flex items-center h-screen justify-center"
+    class="mx-auto my-0 max-w-[900px] flex mt-32 justify-center"
   >
     <Stepper
       :forms="forms"
@@ -10,8 +10,8 @@
   </div>
 </template>
 <script setup>
-import SideBar from "../components/stepper/stepper.vue";
-import Stepper from "../components/stepper/stepper.vue";
+import SideBar from "../components/stepper/Stepper.vue";
+import Stepper from "../components/stepper/Stepper.vue";
 import Step1 from "../components/stepper/Step1.vue";
 import Step2 from "../components/stepper/Step2.vue";
 import Step3 from "../components/stepper/Step3.vue";

@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center flex justify-center h-screen items-center flex-col">
+  <div class="text-center flex justify-center mt-12 items-center flex-col">
     <div class="text-secondary tracking-[.25px]">
       <h1 class="font-medium text-[32px] leading-[100%]">
         Liveness Detection for User Verification
