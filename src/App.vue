@@ -5,7 +5,6 @@
     >
       EMI Components
     </div>
-    <router-view />
     <div class="mx-auto max-w-[1200px] flex gap-6 my-7 px-10 flex-wrap">
       <router-link to="/header">
         <BaseButton variant="outline" type="secondary">
@@ -60,6 +59,7 @@
         </BaseButton>
       </router-link>
     </div>
+    <router-view />
   </div>
 
   <BaseSnackBar
