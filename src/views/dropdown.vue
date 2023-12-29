@@ -4,5 +4,5 @@
   </div>
 </template>
 <script setup>
-import Dropdown from "../components/D.vue";
+import Dropdown from "../components/Dropdown.vue";
 </script>

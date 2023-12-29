@@ -46,7 +46,7 @@
   </div>
 </template>
 <script setup>
-import LoadingStatus from "./loadingStatus.vue";
+import LoadingStatus from "./LoadingStatus.vue";
 import { ref } from "vue";
 
 const loading = ref(true);

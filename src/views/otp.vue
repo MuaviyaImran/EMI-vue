@@ -6,5 +6,5 @@
   </div>
 </template>
 <script setup>
-import OTP from "../components/OTPass.vue";
+import OTP from "../components/OneTimePassword.vue";
 </script>
