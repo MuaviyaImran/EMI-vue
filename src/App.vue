@@ -59,7 +59,7 @@
         </BaseButton>
       </router-link>
     </div>
-    <router-view />
+    <RouterView />
   </div>
 
   <BaseSnackBar
@@ -81,6 +81,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { RouterView } from "vue-router";
 import BaseSnackBar from "./components/BaseSnackBar.vue";
 import BaseButton from "./components/BaseButton.vue";
 
