@@ -4,5 +4,5 @@
   </div>
 </template>
 <script setup>
-import LivenessPermition from "../components/livenessPermition.vue";
+import LivenessPermition from "../components/LivenessPermition.vue";
 </script>

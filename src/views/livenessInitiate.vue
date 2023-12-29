@@ -2,5 +2,5 @@
   <LivenessInitiate />
 </template>
 <script setup>
-import LivenessInitiate from "../components/livenessInitiate.vue";
+import LivenessInitiate from "../components/LivenessInitiate.vue";
 </script>

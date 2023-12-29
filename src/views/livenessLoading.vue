@@ -2,5 +2,5 @@
   <LivenessLoading />
 </template>
 <script setup>
-import LivenessLoading from "../components/livenessLoading.vue";
+import LivenessLoading from "../components/LivenessLoading.vue";
 </script>
