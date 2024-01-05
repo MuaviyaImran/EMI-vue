@@ -77,6 +77,9 @@
       </BaseButton>
     </template>
   </BaseSnackBar>
+  <BaseButton @click="handleClick" variant="outline" type="secondary">
+    <template #text>Send Email</template>
+  </BaseButton>
 </template>
 
 <script setup>
@@ -84,6 +87,28 @@ import { ref } from "vue";
 import { RouterView } from "vue-router";
 import BaseSnackBar from "./components/BaseSnackBar.vue";
 import BaseButton from "./components/BaseButton.vue";
+
+import { useRender } from "vue-email";
+import SendEmail from "./components/SendEmail.vue";
+console.log(SendEmail);
+const handleClick = async () => {
+  // const template = await useRender(SendEmail);
+  const template = `<p style="color:red;">I am red</p>`;
+  console.log(template);
+  await fetch("http://192.168.0.241:3001/api/send-email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      template,
+    }),
+  }).then(async (response) => {
+    const data = await response.json();
+    console.log("res", response);
+    console.log("data", data);
+  });
+};
 
 const showSnackbar = ref(false);
 const handleSnackbarClick = () => {
