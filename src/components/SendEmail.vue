@@ -1,11 +1,15 @@
 <template>
-  <div class="border-2 mx-auto my-0 max-w-[1200px] flex flex-col items-center">
+  <div
+    ref="emailTemplate"
+    class="border-2 mx-auto my-0 max-w-[1200px] flex flex-col items-center"
+  >
+    <!-- <p>asdas{{ process.env.BASE_URL }}</p> -->
     <div lang="en" :style="main">
       <div :style="container">
-        <img src="/icons/logo.svg" alt="App Logo" :style="logo" />
+        <img :src="`icons/logo.svg`" alt="App Logo" :style="logo" />
         <span :style="welcome">WELCOME!</span>
         <img
-          src="/icons/email-welcome-bottombar.svg"
+          :src="`icons/email-welcome-bottombar.svg`"
           alt="Email Welcome Bottombar"
           :style="bottombar"
         />
@@ -37,7 +41,7 @@
           would love to hear from you.
         </p>
         <span :style="paragraph">Best regards,</span>
-        <img src="/icons/signature.svg" alt="Signature" :style="signature" />
+        <img :src="`icons/signature.svg`" alt="Signature" :style="signature" />
         <span :style="designation">CEO Zolvat LTD.</span>
 
         <hr :style="hr" />
@@ -55,9 +59,21 @@
           <tbody>
             <tr :style="socialMediaIcons">
               <img class="socialIcon" src="/icons/twitter.svg" alt="App Logo" />
-              <img class="socialIcon" src="/icons/instagram.svg" alt="App Logo" />
-              <img class="socialIcon" src="/icons/facebook.svg" alt="App Logo" />
-              <img class="socialIcon" src="/icons/linkedin.svg" alt="App Logo" />
+              <img
+                class="socialIcon"
+                src="/icons/instagram.svg"
+                alt="App Logo"
+              />
+              <img
+                class="socialIcon"
+                src="/icons/facebook.svg"
+                alt="App Logo"
+              />
+              <img
+                class="socialIcon"
+                src="/icons/linkedin.svg"
+                alt="App Logo"
+              />
             </tr>
           </tbody>
         </table>
@@ -76,9 +92,15 @@
       </div>
     </div>
   </div>
+
+  <div class="flex justify-center my-4">
+    <BaseButton @click="handleClick" variant="outline" type="secondary">
+      <template #text>Send Email</template>
+    </BaseButton>
+  </div>
 </template>
 <style scoped>
-.socialIcon{
+.socialIcon {
   cursor: pointer;
 }
 </style>
@@ -86,6 +108,27 @@
 import { ref } from "vue";
 import BaseButton from "./BaseButton.vue";
 
+const emailTemplate = ref(null);
+
+const handleClick = async () => {
+  console.log(emailTemplate.value);
+
+  await fetch("http://192.168.100.80:3000/api/send-email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ template: `${emailTemplate.value.innerHTML}` }),
+  }).then(async (response) => {
+    if (!response.ok) {
+      console.error(`Request failed with status: ${response.status}`);
+      return;
+    }
+    const data = await response.json();
+    console.log("res", response);
+    console.log("data", data);
+  });
+};
 
 const userDetails = ref({
   name: "Dave",
@@ -151,7 +194,7 @@ const note = {
   "font-style": "italic",
   "font-weight": "400",
   "line-height": "30px",
-  "margin-top":"16px",
+  "margin-top": "16px",
 };
 const hr = {
   borderColor: "#B6B6B6",

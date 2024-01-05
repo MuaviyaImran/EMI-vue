@@ -3,42 +3,32 @@ import nodemailer from "nodemailer";
 import cors from "cors";
 
 const app = express();
+const port = 3000;
 
 app.use(express.json());
 app.use(cors());
 
 app.post("/api/send-email", async (req, res) => {
   const { template } = req.body;
-  console.log(req.body);
-  const testAccount = await nodemailer.createTestAccount();
-  console.log(testAccount);
+  console.log(template);
   const transporter = nodemailer.createTransport({
-    host: process.env.HOST || "smtp.ethereal.email",
-    port: 587,
-    secure: false,
+    service: "gmail",
     auth: {
-      user: testAccount.user,
-      pass: testAccount.pass,
+      user: "muaviya.imran@datumbrain.com",
+      pass: "devn vcbs yqbr oqvh",
     },
   });
-  transporter.verify(function (error, success) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Server is ready to take our messages");
-    }
-  });
-  const options = {
-    from: testAccount.user,
-    to: "muaviya.imran@datumbrain.com",
-    subject: "hello world",
+  const mailOptions = {
+    from: "Zolvat LTD <devlearn41@gmail.com>",
+    to: "muaviyaimran1122@gmail.com",
+    subject: "options.subject",
     html: template,
   };
-  console.log(options);
+
   try {
-    const resp = await transporter.sendMail(options);
+    const resp = await transporter.sendMail(mailOptions);
     console.log("Message sent: %s", resp.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(resp));
+
     return res.json({ message: "Email sent" });
   } catch (error) {
     console.error("Error sending email:", error.message);
@@ -46,6 +36,6 @@ app.post("/api/send-email", async (req, res) => {
   }
 });
 
-app.listen(3001, () => {
-  console.log("Running on Port 3001");
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
 });
