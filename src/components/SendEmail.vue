@@ -111,7 +111,6 @@ import BaseButton from "./BaseButton.vue";
 const emailTemplate = ref(null);
 
 const handleClick = async () => {
-  console.log(emailTemplate.value);
 
   await fetch("http://192.168.100.80:3000/api/send-email", {
     method: "POST",
@@ -125,7 +124,6 @@ const handleClick = async () => {
       return;
     }
     const data = await response.json();
-    console.log("res", response);
     console.log("data", data);
   });
 };

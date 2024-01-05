@@ -10,7 +10,6 @@ app.use(cors());
 
 app.post("/api/send-email", async (req, res) => {
   const { template } = req.body;
-  console.log(template);
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
