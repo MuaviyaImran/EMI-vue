@@ -1,5 +1,4 @@
 <template>
-  <p>Base URL : {{ VITE_BASE_URL }}</p>
   <div
     ref="emailTemplate"
     class="border-2 mx-auto my-0 max-w-[1200px] flex flex-col items-center"
@@ -7,13 +6,13 @@
     <div lang="en" :style="main">
       <div :style="container">
         <img
-          :src="`${VITE_BASE_URL}/icons/logo.svg`"
+          :src="`/icons/logo.svg`"
           alt="App Logo"
           :style="logo"
         />
         <span :style="welcome">WELCOME!</span>
         <img
-          :src="`${VITE_BASE_URL}/icons/email-welcome-bottombar.svg`"
+          :src="`/icons/email-welcome-bottombar.svg`"
           alt="Email Welcome Bottombar"
           :style="bottombar"
         />
@@ -46,7 +45,7 @@
         </p>
         <span :style="paragraph">Best regards,</span>
         <img
-          :src="`${VITE_BASE_URL}/icons/signature.svg`"
+          :src="`/icons/signature.svg`"
           alt="Signature"
           :style="signature"
         />
@@ -68,22 +67,22 @@
             <tr :style="socialMediaIcons">
               <img
                 class="socialIcon"
-                :src="`${VITE_BASE_URL}/icons/twitter.svg`"
+                :src="`/icons/twitter.svg`"
                 alt="App Logo"
               />
               <img
                 class="socialIcon"
-                :src="`${VITE_BASE_URL}/icons/instagram.svg`"
+                :src="`/icons/instagram.svg`"
                 alt="App Logo"
               />
               <img
                 class="socialIcon"
-                :src="`${VITE_BASE_URL}/icons/facebook.svg`"
+                :src="`/icons/facebook.svg`"
                 alt="App Logo"
               />
               <img
                 class="socialIcon"
-                :src="`${VITE_BASE_URL}/icons/linkedin.svg`"
+                :src="`/icons/linkedin.svg`"
                 alt="App Logo"
               />
             </tr>
@@ -119,7 +118,6 @@
 <script setup>
 import { ref } from "vue";
 import BaseButton from "./BaseButton.vue";
-const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 const emailTemplate = ref(null);
 
 const handleClick = async () => {
@@ -128,7 +126,9 @@ const handleClick = async () => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ template: `${emailTemplate.value.innerHTML}` }),
+    body: JSON.stringify({
+      template: `${emailTemplate.value.innerHTML}`,
+    }),
   }).then(async (response) => {
     if (!response.ok) {
       console.error(`Request failed with status: ${response.status}`);
