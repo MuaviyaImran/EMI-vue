@@ -5,10 +5,14 @@
   >
     <div lang="en" :style="main">
       <div :style="container">
-        <img :src="`/icons/logo.svg`" alt="App Logo" :style="logo" />
+        <img
+          :src="`${VITE_BASE_URL}/icons/logo.svg`"
+          alt="App Logo"
+          :style="logo"
+        />
         <span :style="welcome">WELCOME!</span>
         <img
-          :src="`/icons/email-welcome-bottombar.svg`"
+          :src="`${VITE_BASE_URL}/icons/email-welcome-bottombar.svg`"
           alt="Email Welcome Bottombar"
           :style="bottombar"
         />
@@ -40,7 +44,11 @@
           would love to hear from you.
         </p>
         <span :style="paragraph">Best regards,</span>
-        <img :src="`/icons/signature.svg`" alt="Signature" :style="signature" />
+        <img
+          :src="`${VITE_BASE_URL}/icons/signature.svg`"
+          alt="Signature"
+          :style="signature"
+        />
         <span :style="designation">CEO Zolvat LTD.</span>
 
         <hr :style="hr" />
@@ -59,23 +67,23 @@
             <tr :style="socialMediaIcons">
               <img
                 class="socialIcon"
-                :src="`/icons/twitter.svg`"
-                alt="Twitter"
+                :src="`${VITE_BASE_URL}/icons/twitter.svg`"
+                alt="App Logo"
               />
               <img
                 class="socialIcon"
-                :src="`/icons/instagram.svg`"
-                alt="Instagram"
+                :src="`${VITE_BASE_URL}/icons/instagram.svg`"
+                alt="App Logo"
               />
               <img
                 class="socialIcon"
-                :src="`/icons/facebook.svg`"
-                alt="Facebook"
+                :src="`${VITE_BASE_URL}/icons/facebook.svg`"
+                alt="App Logo"
               />
               <img
                 class="socialIcon"
-                :src="`/icons/linkedin.svg`"
-                alt="LinkedIn"
+                :src="`${VITE_BASE_URL}/icons/linkedin.svg`"
+                alt="App Logo"
               />
             </tr>
           </tbody>
@@ -110,6 +118,7 @@
 <script setup>
 import { ref } from "vue";
 import BaseButton from "./BaseButton.vue";
+const VITE_BASE_URL = "https://vue-emi-components.netlify.app/";
 const emailTemplate = ref(null);
 
 const handleClick = async () => {
