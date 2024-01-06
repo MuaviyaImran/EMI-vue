@@ -6,6 +6,7 @@ import OTP from "../views/otp.vue";
 import LivenessPermition from "../views/livenessPermition.vue";
 import LivenessInitiate from "../views/livenessInitiate.vue";
 import LivenessLoading from "../views/livenessLoading.vue";
+import SendEmail from "../views/sendEmail.vue";
 import RequiredDocumentTable from "../views/requiredDocumentTable.vue";
 
 const routes = [
@@ -44,6 +45,10 @@ const routes = [
   {
     path: "/requiredDocumentTable",
     component: RequiredDocumentTable,
+  },
+  {
+    path: "/sendEmail",
+    component: SendEmail,
   },
 ];
 
