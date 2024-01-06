@@ -6,13 +6,13 @@
     <div lang="en" :style="main">
       <div :style="container">
         <img
-          :src="`/icons/logo.svg`"
+          :src="`${VITE_BASE_URL}/icons/logo.svg`"
           alt="App Logo"
           :style="logo"
         />
         <span :style="welcome">WELCOME!</span>
         <img
-          :src="`/icons/email-welcome-bottombar.svg`"
+          :src="`${VITE_BASE_URL}/icons/email-welcome-bottombar.svg`"
           alt="Email Welcome Bottombar"
           :style="bottombar"
         />
@@ -45,7 +45,7 @@
         </p>
         <span :style="paragraph">Best regards,</span>
         <img
-          :src="`/icons/signature.svg`"
+          :src="`${VITE_BASE_URL}/icons/signature.svg`"
           alt="Signature"
           :style="signature"
         />
@@ -67,22 +67,22 @@
             <tr :style="socialMediaIcons">
               <img
                 class="socialIcon"
-                :src="`/icons/twitter.svg`"
+                :src="`${VITE_BASE_URL}/icons/twitter.svg`"
                 alt="App Logo"
               />
               <img
                 class="socialIcon"
-                :src="`/icons/instagram.svg`"
+                :src="`${VITE_BASE_URL}/icons/instagram.svg`"
                 alt="App Logo"
               />
               <img
                 class="socialIcon"
-                :src="`/icons/facebook.svg`"
+                :src="`${VITE_BASE_URL}/icons/facebook.svg`"
                 alt="App Logo"
               />
               <img
                 class="socialIcon"
-                :src="`/icons/linkedin.svg`"
+                :src="`${VITE_BASE_URL}/icons/linkedin.svg`"
                 alt="App Logo"
               />
             </tr>
@@ -118,6 +118,7 @@
 <script setup>
 import { ref } from "vue";
 import BaseButton from "./BaseButton.vue";
+const VITE_BASE_URL = "https://vue-emi-components.netlify.app/";
 const emailTemplate = ref(null);
 
 const handleClick = async () => {
