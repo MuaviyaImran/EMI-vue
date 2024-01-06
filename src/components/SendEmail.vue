@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="emailTemplate"
-    class="border-2 mx-auto my-0 max-w-[1200px] flex flex-col items-center"
-  >
+  <div ref="emailTemplate" class="">
     <div lang="en" :style="main">
       <div :style="container">
         <img
