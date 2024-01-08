@@ -7,7 +7,7 @@ import LivenessPermition from "../views/livenessPermition.vue";
 import LivenessInitiate from "../views/livenessInitiate.vue";
 import LivenessLoading from "../views/livenessLoading.vue";
 import RequiredDocumentTable from "../views/requiredDocumentTable.vue";
-
+import CustomerDetailDropdown from "../views/customerDetailDropdown.vue";
 const routes = [
   {
     path: "/header",
@@ -28,6 +28,10 @@ const routes = [
   {
     path: "/dropdown",
     component: Dropdown,
+  },
+  {
+    path: "/customerDetailDropdown",
+    component: CustomerDetailDropdown,
   },
   {
     path: "/livenessPermition",
