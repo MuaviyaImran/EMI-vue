@@ -1,94 +1,80 @@
 <template>
   <div ref="emailTemplate" class="">
-    <div lang="en" :style="main">
-      <div :style="container">
-        <img :src="`/icons/logo.svg`" alt="App Logo" :style="logo" />
-        <span :style="welcome">WELCOME!</span>
-        <img
-          :src="`/icons/email-welcome-bottombar.svg`"
-          alt="Email Welcome Bottombar"
-          :style="bottombar"
-        />
-        <span :style="nameStyle">Dear {{ userDetails.name }},</span>
-        <p :style="paragraph">
+    <div lang="en" class="main">
+      <div class="container">
+        <img :src="`cid:logo`" alt="Your golden key to success" class="logo" />
+        <span class="welcome">WELCOME!</span>
+        <div class="bottombar">
+          <img
+            :src="`cid:bottombar`"
+            alt="Email Welcome Bottombar"
+            class="bottombar"
+          />
+        </div>
+        <span class="nameStyle">Dear {{ userDetails.name }},</span>
+        <p class="paragraph">
           <span>
             We have received your Zolvat Corporate Account request associated
             with email address
           </span>
-          <span :style="underline"> {{ userDetails.email }}.</span>
+          <span class="underline"> {{ userDetails.email }}.</span>
         </p>
 
-        <p :style="paragraph">
+        <p class="paragraph">
           In order to verify your account details and your liveliness
           verification, please complete your account verification process by
           clicking the button below.
         </p>
-        <button href="https://vuejs.org" :style="button">
+        <button href="https://vuejs.org" class="button">
           Complete Account Verification
         </button>
-        <p :style="note">
+        <p class="note">
           Note: Waiting period for account verification can take up to two
           working days.
         </p>
-        <p :style="paragraph">
+        <p class="paragraph">
           If you have any questions or comments, you can go through our
-          <span :style="underline">FAQs</span>
+          <span class="underline">FAQs</span>
           page or drop us a message using chat option within your account. We
           would love to hear from you.
         </p>
-        <span :style="paragraph">Best regards,</span>
-        <img :src="`/icons/signature.svg`" alt="Signature" :style="signature" />
-        <span :style="designation">CEO Zolvat LTD.</span>
+        <div>
+          <span class="paragraph">Best regards,</span>
+        </div>
+        <div>
+          <img :src="`cid:signature`" alt="Signature" class="signature" />
+        </div>
+        <div>
+          <span class="designation">CEO Zolvat LTD.</span>
+        </div>
 
-        <hr :style="hr" />
+        <hr class="hr" />
         <!-- Footer -->
-        <p :style="footerNoticeHeading">
+        <p class="footerNoticeHeading">
           IMPORTANT SECURITY NOTICE:
-          <span :style="footerNoticeDescription"
+          <span class="footerNoticeDescription"
             >Please be vigilant in protecting your personal information. Do not
             share sensitive details, such as passwords or financial information,
             via email or unverified platforms. Always ensure you are logging in
             through our official website.</span
           >
         </p>
-        <table :style="socialMediaIconsTable">
-          <tbody>
-            <tr :style="socialMediaIcons">
-              <img
-                class="socialIcon"
-                :src="`/icons/twitter.svg`"
-                alt="Twitter"
-              />
-              <img
-                class="socialIcon"
-                :src="`/icons/instagram.svg`"
-                alt="Instagram"
-              />
-              <img
-                class="socialIcon"
-                :src="`/icons/facebook.svg`"
-                alt="Facebook"
-              />
-              <img
-                class="socialIcon"
-                :src="`/icons/linkedin.svg`"
-                alt="LinkedIn"
-              />
-            </tr>
-          </tbody>
-        </table>
-        <table :style="footerAboutUsTable">
-          <tbody>
-            <tr :style="footerAboutUs">
-              <span>Zolvat LTD</span>
-              <div :style="footerAboutUsLinks">
-                <span>FAQs</span>
-                <span>Privacy Policy</span>
-                <span>Terms & Conditions</span>
-              </div>
-            </tr>
-          </tbody>
-        </table>
+        <div class="socialMediaIconsTable">
+          <img class="socialIcon" :src="`cid:twitter`" alt="Twitter" />
+          <img class="socialIcon" :src="`cid:instagram`" alt="Instagram" />
+          <img class="socialIcon" :src="`cid:facebook`" alt="Facebook" />
+          <img class="socialIcon" :src="`cid:linkedin`" alt="LinkedIn" />
+        </div>
+        <div class="footerAboutUsTable">
+          <div class="footerAboutUs">
+            <span>Zolvat LTD</span>
+            <div class="footerAboutUsLinks">
+              <span>FAQs</span>
+              <span>Privacy Policy</span>
+              <span>Terms & Conditions</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -100,8 +86,139 @@
   </div>
 </template>
 <style scoped>
+:root {
+  --font-stack: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
 .socialIcon {
   cursor: pointer;
+}
+.main {
+  width: 100%;
+  background-color: white;
+  padding: 40px 80px;
+  border: 1px solid #b6b6b6;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.logo {
+  margin: 0 auto;
+}
+.container {
+  font-family: var(--font-stack);
+  width: 100%;
+}
+
+.bottombar {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+.nameStyle {
+  color: #333;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 41px;
+}
+.welcome {
+  color: #5b5b5b;
+  display: block;
+  text-align: center;
+  font-size: 100px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+  letter-spacing: 15px;
+}
+
+.button {
+  padding: 10px 24px;
+  border-radius: 8px;
+  background: #ffcf25;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: #333;
+  margin-top: 18px;
+}
+.signature {
+  margin: 16px 0;
+}
+.note {
+  color: #808080;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 30px;
+  margin-top: 16px;
+}
+.hr {
+  border-color: "#B6B6B6";
+  margin: 20px 0;
+}
+.paragraph {
+  color: #333;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 41px;
+  margin-top: 16px;
+}
+
+.designation {
+  color: #808080;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 41px;
+}
+.underline {
+  color: #2136f3;
+  font-weight: 500;
+  font-size: 24px;
+  font-style: normal;
+  line-height: 41px;
+  text-decoration-line: underline;
+}
+
+.footerNoticeHeading {
+  color: #808080;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 600;
+}
+.footerNoticeDescription {
+  font-size: 18px;
+  font-weight: 400;
+}
+.socialMediaIconsTable {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin: 20px 0;
+}
+
+.footerAboutUsTable {
+  width: 100%;
+}
+.footerAboutUs {
+  display: flex;
+  color: #808080;
+  font-size: 18px;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration-color: #808080;
+  text-decoration-line: underline;
+}
+.footerAboutUsLinks {
+  display: flex;
+  gap: 20px;
+
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
 }
 </style>
 <script setup>
@@ -110,7 +227,7 @@ import BaseButton from "./BaseButton.vue";
 const emailTemplate = ref(null);
 
 const handleClick = async () => {
-  await fetch("http://192.168.100.80:3000/api/send-email", {
+  await fetch("http://192.168.0.241:3000/api/send-email", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -132,133 +249,4 @@ const userDetails = ref({
   name: "Dave",
   email: "davemorris@gmail.com",
 });
-
-const main = {
-  width: "100%",
-  backgroundColor: "#ffffff",
-  padding: "40px 80px",
-};
-
-const fontFamily =
-  '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif';
-const marginTop = "18px";
-
-const container = {
-  fontFamily,
-  width: "100%",
-};
-const logo = {
-  margin: "0 auto",
-};
-
-const bottombar = {
-  margin: "0 auto",
-};
-const nameStyle = {
-  color: "#333",
-  fontSize: "24px",
-  "font-style": "normal",
-  "font-weight": "500",
-  "line-height": "41px",
-};
-const welcome = {
-  color: "#5B5B5B",
-  display: "block",
-  "text-align": "center",
-  fontSize: "100px",
-  "font-style": "normal",
-  "font-weight": "200",
-  "line-height": "normal",
-  "letter-spacing": "15px",
-};
-
-const button = {
-  padding: "10px 24px",
-  "border-radius": "8px",
-  background: "#FFCF25",
-  fontSize: "24px",
-  "font-style": "normal",
-  "font-weight": "500",
-  "letter-spacing": "0.4px",
-  color: "#333",
-  marginTop,
-};
-const signature = {
-  margin: "16px 0",
-};
-const note = {
-  color: "#808080",
-  fontSize: "24px",
-  "font-style": "italic",
-  "font-weight": "400",
-  "line-height": "30px",
-  "margin-top": "16px",
-};
-const hr = {
-  borderColor: "#B6B6B6",
-  margin: "20px 0",
-};
-const paragraph = {
-  color: "#333",
-  fontSize: "24px",
-  "font-style": "normal",
-  "font-weight": "400",
-  "line-height": "41px",
-  marginTop,
-};
-
-const designation = {
-  color: "#808080",
-  fontSize: "24px",
-  "font-style": "normal",
-  "font-weight": "400",
-  "line-height": "41px",
-};
-const underline = {
-  color: "#2136F3",
-  "font-weight": "500",
-  fontSize: "24px",
-  "font-style": "normal",
-  "line-height": "41px",
-  "text-decoration-line": "underline",
-};
-
-const footerNoticeHeading = {
-  color: "#808080",
-  fontSize: "18px",
-  "font-style": "italic",
-  "font-weight": "600",
-};
-const footerNoticeDescription = {
-  fontSize: "18px",
-  "font-weight": "400",
-};
-const socialMediaIconsTable = {
-  display: "flex",
-  "justify-content": "center",
-};
-const socialMediaIcons = {
-  width: "100%",
-  display: "flex",
-  gap: "36px",
-  margin: "20px 0",
-};
-const footerAboutUsTable = {
-  width: "100%",
-};
-const footerAboutUs = {
-  display: "flex",
-  color: "#808080",
-  "justify-content": "space-between",
-  "text-decoration-color": "#808080",
-  "text-decoration-line": "underline",
-};
-const footerAboutUsLinks = {
-  display: "flex",
-  gap: "20px",
-  "font-size": "18px",
-  "font-style": "normal",
-  "font-weight": "400",
-  "line-height": "22px",
-};
 </script>
