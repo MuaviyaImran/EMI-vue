@@ -46,6 +46,11 @@
           <template #text>Document Form</template>
         </BaseButton>
       </router-link>
+      <router-link to="/sendEmail"
+        ><BaseButton variant="outline" type="secondary">
+          <template #text>Send Email</template>
+        </BaseButton>
+      </router-link>
       <router-link to="/customerDetailDropdown"
         ><BaseButton variant="outline" type="secondary">
           <template #text>Customer Detail Dropdown</template>
