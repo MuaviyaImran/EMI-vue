@@ -10,7 +10,7 @@
     >
       <div style="width: 100%">
         <img
-          :src="`cid:logo`"
+          src="https://vue-emi-components.netlify.app/icons/logo.svg"
           alt="Your golden key to success"
           style="margin: 0 auto"
         />
@@ -30,7 +30,7 @@
         >
         <div style="margin: 0 auto; display: block; text-align: center">
           <img
-            :src="`cid:bottombar`"
+            src="https://vue-emi-components.netlify.app/icons/welcome_bottombar.svg"
             alt="Email Welcome Bottombar"
             style="margin: 0 auto; display: block; text-align: center"
           />
@@ -155,7 +155,11 @@
           >
         </div>
         <div>
-          <img :src="`cid:signature`" alt="Signature" style="margin: 16px 0" />
+          <img
+            src="https://vue-emi-components.netlify.app/icons/signature.svg"
+            alt="Signature"
+            style="margin: 16px 0"
+          />
         </div>
         <div>
           <span
@@ -191,22 +195,22 @@
         <div style="width: 300px; display: flex; margin: 20px auto">
           <img
             style="cursor: pointer; margin: 0 18px"
-            :src="`cid:twitter`"
+            src="https://vue-emi-components.netlify.app/icons/twitter.svg"
             alt="Twitter"
           />
           <img
-            style="cursor: pointer margin:0 18px"
-            :src="`cid:instagram`"
+            style="cursor: pointer; margin: 0 18px"
+            src="https://vue-emi-components.netlify.app/icons/instagram.svg"
             alt="Instagram"
           />
           <img
-            style="cursor: pointer margin:0 18px"
-            :src="`cid:facebook`"
+            style="cursor: pointer; margin: 0 18px"
+            src="https://vue-emi-components.netlify.app/icons/facebook.svg"
             alt="Facebook"
           />
           <img
-            style="cursor: pointer margin:0 18px"
-            :src="`cid:linkedin`"
+            style="cursor: pointer; margin: 0 18px"
+            src="https://vue-emi-components.netlify.app/icons/linkedin.svg"
             alt="LinkedIn"
           />
         </div>
