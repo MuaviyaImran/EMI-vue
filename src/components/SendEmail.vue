@@ -249,6 +249,7 @@
 <script setup>
 import { ref } from "vue";
 import BaseButton from "./BaseButton.vue";
+const VITE_BASE_URL = "https://vue-emi-components.netlify.app/";
 const emailTemplate = ref(null);
 
 const handleClick = async () => {
