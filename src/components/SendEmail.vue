@@ -1,77 +1,237 @@
 <template>
-  <div ref="emailTemplate" class="">
-    <div lang="en" class="main">
-      <div class="container">
-        <img :src="`cid:logo`" alt="Your golden key to success" class="logo" />
-        <span class="welcome">WELCOME!</span>
-        <div class="bottombar">
+  <div ref="emailTemplate">
+    <div
+      style="
+        background-color: white;
+        padding: 40px 80px;
+        border: 1px solid #b6b6b6;
+        max-width: 1000px;
+      "
+    >
+      <div style="width: 100%">
+        <img
+          :src="`cid:logo`"
+          alt="Your golden key to success"
+          style="margin: 0 auto"
+        />
+        <span
+          style="
+            color: #5b5b5b;
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 100px;
+            font-style: normal;
+            font-weight: 200;
+            line-height: normal;
+            letter-spacing: 15px;
+          "
+          >WELCOME!</span
+        >
+        <div style="margin: 0 auto; display: block; text-align: center">
           <img
             :src="`cid:bottombar`"
             alt="Email Welcome Bottombar"
-            class="bottombar"
+            style="margin: 0 auto; display: block; text-align: center"
           />
         </div>
-        <span class="nameStyle">Dear {{ userDetails.name }},</span>
-        <p class="paragraph">
+        <span
+          style="
+            color: #333;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 41px;
+          "
+          >Dear {{ userDetails.name }},</span
+        >
+        <p
+          style="
+            color: #333;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 41px;
+            margin-top: 16px;
+          "
+        >
           <span>
             We have received your Zolvat Corporate Account request associated
             with email address
           </span>
-          <span class="underline"> {{ userDetails.email }}.</span>
+          <span
+            style="
+              color: #2136f3;
+              font-weight: 500;
+              font-size: 24px;
+              font-style: normal;
+              line-height: 41px;
+              text-decoration-line: underline;
+            "
+          >
+            {{ userDetails.email }}.</span
+          >
         </p>
 
-        <p class="paragraph">
+        <p
+          style="
+            color: #333;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 41px;
+            margin-top: 16px;
+          "
+        >
           In order to verify your account details and your liveliness
           verification, please complete your account verification process by
           clicking the button below.
         </p>
-        <button href="https://vuejs.org" class="button">
+        <button
+          href="https://vuejs.org"
+          style="
+            padding: 10px 24px;
+            border-radius: 8px;
+            background: #ffcf25;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            color: #333;
+            margin-top: 18px;
+          "
+        >
           Complete Account Verification
         </button>
-        <p class="note">
+        <p
+          style="
+            color: #808080;
+            font-size: 24px;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 30px;
+            margin-top: 16px;
+          "
+        >
           Note: Waiting period for account verification can take up to two
           working days.
         </p>
-        <p class="paragraph">
+        <p
+          style="
+            color: #333;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 41px;
+            margin-top: 16px;
+          "
+        >
           If you have any questions or comments, you can go through our
-          <span class="underline">FAQs</span>
+          <span
+            style="
+              color: #2136f3;
+              font-weight: 500;
+              font-size: 24px;
+              font-style: normal;
+              line-height: 41px;
+              text-decoration-line: underline;
+            "
+            >FAQs</span
+          >
           page or drop us a message using chat option within your account. We
           would love to hear from you.
         </p>
         <div>
-          <span class="paragraph">Best regards,</span>
+          <span
+            style="
+              color: #333;
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 41px;
+              margin-top: 16px;
+            "
+            >Best regards,</span
+          >
         </div>
         <div>
-          <img :src="`cid:signature`" alt="Signature" class="signature" />
+          <img :src="`cid:signature`" alt="Signature" style="margin: 16px 0" />
         </div>
         <div>
-          <span class="designation">CEO Zolvat LTD.</span>
+          <span
+            style="
+              color: #808080;
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 41px;
+            "
+            >CEO Zolvat LTD.</span
+          >
         </div>
 
-        <hr class="hr" />
+        <hr style="border-color: #b6b6b6; margin: 20px 0" />
         <!-- Footer -->
-        <p class="footerNoticeHeading">
+        <p
+          style="
+            color: #808080;
+            font-size: 18px;
+            font-style: italic;
+            font-weight: 600;
+          "
+        >
           IMPORTANT SECURITY NOTICE:
-          <span class="footerNoticeDescription"
+          <span style="font-size: 18px; font-weight: 400"
             >Please be vigilant in protecting your personal information. Do not
             share sensitive details, such as passwords or financial information,
             via email or unverified platforms. Always ensure you are logging in
             through our official website.</span
           >
         </p>
-        <div class="socialMediaIconsTable">
-          <img class="socialIcon" :src="`cid:twitter`" alt="Twitter" />
-          <img class="socialIcon" :src="`cid:instagram`" alt="Instagram" />
-          <img class="socialIcon" :src="`cid:facebook`" alt="Facebook" />
-          <img class="socialIcon" :src="`cid:linkedin`" alt="LinkedIn" />
+        <div style="width: 300px; display: flex; margin: 20px auto">
+          <img
+            style="cursor: pointer; margin: 0 18px"
+            :src="`cid:twitter`"
+            alt="Twitter"
+          />
+          <img
+            style="cursor: pointer margin:0 18px"
+            :src="`cid:instagram`"
+            alt="Instagram"
+          />
+          <img
+            style="cursor: pointer margin:0 18px"
+            :src="`cid:facebook`"
+            alt="Facebook"
+          />
+          <img
+            style="cursor: pointer margin:0 18px"
+            :src="`cid:linkedin`"
+            alt="LinkedIn"
+          />
         </div>
-        <div class="footerAboutUsTable">
-          <div class="footerAboutUs">
-            <span>Zolvat LTD</span>
-            <div class="footerAboutUsLinks">
-              <span>FAQs</span>
-              <span>Privacy Policy</span>
-              <span>Terms & Conditions</span>
+        <div style="width: 100%">
+          <div
+            style="
+              color: #808080;
+              display: flex;
+              font-size: 18px;
+              text-decoration-color: #808080;
+              text-decoration-line: underline;
+            "
+          >
+            <span style="margin-right: auto">Zolvat LTD</span>
+            <div
+              style="
+                display: flex;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 22px;
+              "
+            >
+              <span style="margin: 0 10px">FAQs</span>
+              <span style="margin: 0 10px">Privacy Policy</span>
+              <span style="margin: 0 10px">Terms & Conditions</span>
             </div>
           </div>
         </div>
@@ -85,142 +245,7 @@
     </BaseButton>
   </div>
 </template>
-<style scoped>
-:root {
-  --font-stack: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-}
-.socialIcon {
-  cursor: pointer;
-}
-.main {
-  width: 100%;
-  background-color: white;
-  padding: 40px 80px;
-  border: 1px solid #b6b6b6;
-  margin: 0 auto;
-  max-width: 1200px;
-}
-.logo {
-  margin: 0 auto;
-}
-.container {
-  font-family: var(--font-stack);
-  width: 100%;
-}
 
-.bottombar {
-  margin: 0 auto;
-  display: block;
-  text-align: center;
-}
-.nameStyle {
-  color: #333;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 41px;
-}
-.welcome {
-  color: #5b5b5b;
-  display: block;
-  text-align: center;
-  font-size: 100px;
-  font-style: normal;
-  font-weight: 200;
-  line-height: normal;
-  letter-spacing: 15px;
-}
-
-.button {
-  padding: 10px 24px;
-  border-radius: 8px;
-  background: #ffcf25;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-  color: #333;
-  margin-top: 18px;
-}
-.signature {
-  margin: 16px 0;
-}
-.note {
-  color: #808080;
-  font-size: 24px;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 30px;
-  margin-top: 16px;
-}
-.hr {
-  border-color: "#B6B6B6";
-  margin: 20px 0;
-}
-.paragraph {
-  color: #333;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 41px;
-  margin-top: 16px;
-}
-
-.designation {
-  color: #808080;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 41px;
-}
-.underline {
-  color: #2136f3;
-  font-weight: 500;
-  font-size: 24px;
-  font-style: normal;
-  line-height: 41px;
-  text-decoration-line: underline;
-}
-
-.footerNoticeHeading {
-  color: #808080;
-  font-size: 18px;
-  font-style: italic;
-  font-weight: 600;
-}
-.footerNoticeDescription {
-  font-size: 18px;
-  font-weight: 400;
-}
-.socialMediaIconsTable {
-  display: flex;
-  justify-content: center;
-  gap: 36px;
-  margin: 20px 0;
-}
-
-.footerAboutUsTable {
-  width: 100%;
-}
-.footerAboutUs {
-  display: flex;
-  color: #808080;
-  font-size: 18px;
-  align-items: center;
-  justify-content: space-between;
-  text-decoration-color: #808080;
-  text-decoration-line: underline;
-}
-.footerAboutUsLinks {
-  display: flex;
-  gap: 20px;
-
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px;
-}
-</style>
 <script setup>
 import { ref } from "vue";
 import BaseButton from "./BaseButton.vue";
