@@ -22,29 +22,7 @@ app.post("/api/send-email", async (req, res) => {
     from: "Zolvat LTD <zolvatltd@gmail.com>",
     to: "muaviyaimran1122@gmail.com",
     subject: "Welcome To Zolvat",
-    html: `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <style>
-        :root {
-          --font-stack: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-        }
-        body{
-          font-family: var(--font-stack);
-        }
-      </style>
-    </head>
-    <body>
-      ${template}
-       
-    </body>
-    
-    </html>
-  `,
+    html: template,
   };
   try {
     const resp = await transporter.sendMail(mailOptions);

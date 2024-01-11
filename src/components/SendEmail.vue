@@ -257,7 +257,7 @@ const VITE_BASE_URL = "https://vue-emi-components.netlify.app/";
 const emailTemplate = ref(null);
 
 const handleClick = async () => {
-  await fetch("http://192.168.0.241:3000/api/send-email", {
+  await fetch("http://192.168.0.240:3000/api/send-email", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
