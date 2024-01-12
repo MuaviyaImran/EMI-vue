@@ -51,6 +51,11 @@
           <template #text>Send Email</template>
         </BaseButton>
       </router-link>
+      <router-link to="/yearly-monthly"
+        ><BaseButton variant="outline" type="secondary">
+          <template #text>Yearly - Monthly</template>
+        </BaseButton>
+      </router-link>
       <router-link to="/customerDetailDropdown"
         ><BaseButton variant="outline" type="secondary">
           <template #text>Customer Detail Dropdown</template>

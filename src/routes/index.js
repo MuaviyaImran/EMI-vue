@@ -9,6 +9,7 @@ import LivenessLoading from "../views/livenessLoading.vue";
 import SendEmail from "../views/sendEmail.vue";
 import RequiredDocumentTable from "../views/requiredDocumentTable.vue";
 import CustomerDetailDropdown from "../views/customerDetailDropdown.vue";
+import YearlyMonthlyFields from "../views/yearlyMonthlyFields.vue";
 const routes = [
   {
     path: "/header",
@@ -25,6 +26,10 @@ const routes = [
   {
     path: "/otp",
     component: OTP,
+  },
+  {
+    path: "/yearly-monthly",
+    component: YearlyMonthlyFields,
   },
   {
     path: "/dropdown",
