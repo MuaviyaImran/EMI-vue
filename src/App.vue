@@ -74,7 +74,9 @@
         </BaseButton>
       </router-link>
     </div>
-    <RouterView />
+    <div class="my-5">
+      <RouterView />
+    </div>
   </div>
 
   <BaseSnackBar
