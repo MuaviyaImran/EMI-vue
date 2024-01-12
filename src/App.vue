@@ -21,6 +21,11 @@
           <template #text>Sidebar</template>
         </BaseButton>
       </router-link>
+      <router-link to="/reviewClientOnboarding"
+        ><BaseButton variant="outline" type="secondary">
+          <template #text>Review Client Onboarding</template>
+        </BaseButton>
+      </router-link>
       <router-link to="/stepper"
         ><BaseButton variant="outline" type="secondary">
           <template #text>Stepper</template>
