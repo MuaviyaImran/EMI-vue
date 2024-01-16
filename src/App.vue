@@ -61,6 +61,11 @@
           <template #text>Customer Detail Dropdown</template>
         </BaseButton>
       </router-link>
+      <router-link to="/transfersInvoice"
+        ><BaseButton variant="outline" type="secondary">
+          <template #text>Transfers Invoice</template>
+        </BaseButton>
+      </router-link>
       <BaseButton
         variant="outline"
         type="secondary"

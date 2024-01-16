@@ -10,6 +10,7 @@ import SendEmail from "../views/sendEmail.vue";
 import RequiredDocumentTable from "../views/requiredDocumentTable.vue";
 import CustomerDetailDropdown from "../views/customerDetailDropdown.vue";
 import YearlyMonthlyFields from "../views/yearlyMonthlyFields.vue";
+import TransfersInvoice from "../views/transfersInvoice.vue";
 const routes = [
   {
     path: "/header",
@@ -30,6 +31,10 @@ const routes = [
   {
     path: "/yearly-monthly",
     component: YearlyMonthlyFields,
+  },
+  {
+    path: "/transfersInvoice",
+    component: TransfersInvoice,
   },
   {
     path: "/dropdown",
