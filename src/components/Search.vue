@@ -551,7 +551,7 @@
 </template>
 <script setup>
 import { ref, watch } from "vue";
-let showSearchDropdown = ref(true);
+let showSearchDropdown = ref(false);
 let showFilterDropdown = ref(false);
 
 const showSearchDropdownSetter = () => {
