@@ -78,6 +78,11 @@
           <template #text>Liveness Initiate</template>
         </BaseButton>
       </router-link>
+      <router-link to="/search"
+        ><BaseButton variant="outline" type="secondary">
+          <template #text>Search</template>
+        </BaseButton>
+      </router-link>
     </div>
     <div class="my-5">
       <RouterView />
