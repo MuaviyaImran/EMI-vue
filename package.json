@@ -15,6 +15,7 @@
     "@aws-sdk/credential-provider-cognito-identity": "^3.474.0",
     "@formkit/tailwindcss": "^1.4.0",
     "@formkit/vue": "^1.4.0",
+    "@tailwindcss/forms": "^0.5.7",
     "aws-amplify": "^6.0.7",
     "cors": "^2.8.5",
     "express": "^4.18.2",
@@ -26,6 +27,7 @@
     "vue": "^3.3.8",
     "vue-html2pdf": "^1.8.0",
     "vue-router": "^4.2.5",
+    "vue-tailwind-datepicker": "^1.6.1",
     "vue3-otp-input": "^0.4.1"
   },
   "devDependencies": {

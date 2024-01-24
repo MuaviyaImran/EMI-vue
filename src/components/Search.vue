@@ -15,12 +15,18 @@
         >
           <input
             @click="showSearchDropdownSetter"
-            class="py-2 basis-[93%] rounded px-3 m-1 focus:outline-none text-base font-normal text-[#808080] placeholder:text-base placeholder:font-normal placeholder:text-[#808080]"
+            @click.stop="preventClose"
+            ref="dropdown"
+            class="search-input py-2 basis-[93%] border-0 rounded px-3 m-1 focus:outline-none focus:ring-none text-base font-normal text-[#808080] placeholder:text-base placeholder:font-normal placeholder:text-[#808080]"
             type="text"
             placeholder="Search by Name, Ticket ID, or Email..."
           />
           <button
-            @click=""
+            @click="
+              () => {
+                console.log('Search mee');
+              }
+            "
             class="m-1 basis-[6%] flex px-4 py-[10px] justify-center items-center border rounded-lg bg-[#F1F1F1] border-secondary-light"
           >
             <svg
@@ -39,6 +45,8 @@
         </div>
         <button
           @click="showFilterDropdownSetter"
+          @click.stop="preventClose"
+          ref="dropdown"
           class="flex px-4 py-[10px] justify-center items-center gap-2 border rounded-lg bg-white border-secondary-light"
         >
           <span class="text-sm font-semibold text-secondary">Filters</span>
@@ -59,6 +67,7 @@
 
       <!-- Filter Dropdown -->
       <div
+        @click.stop="preventClose"
         v-if="showSearchDropdown"
         class="px-4 py-3 flex flex-col gap-1 absolute min-w-[1078px] -mt-5 border border-secondary-light drop-shadow-2xl rounded z-10 bg-white"
       >
@@ -98,6 +107,7 @@
 
       <div
         v-if="showFilterDropdown"
+        @click.stop="preventClose"
         class="absolute min-w-[1185px] -mt-3 drop-shadow-2xl rounded z-10 bg-white"
       >
         <div
@@ -161,7 +171,45 @@
 
             <div class="p-2 flex flex-col gap-1">
               <span class="text-sm font-semibold text-secondary">Date</span>
-              <div></div>
+              <div class="bg-white">
+                <div class="flex gap-2 relative">
+                  <label for="input" class="flex gap-2 items-center">
+                    <span class="text-xs font-normal leading-[30px]"
+                      >From:</span
+                    >
+                    <input
+                      type="text"
+                      :value="dateValue.startDate"
+                      @click="handleShowCalander"
+                      placeholder="dd/mm/yyyy"
+                      class="outline-none border border-secondary-light rounded px-[10px] py-1 placeholder:text-[10px] placeholder:font-normal text-[10px] font-normal max-w-[90px]"
+                    />
+                  </label>
+                  <label for="input" class="flex gap-2 items-center">
+                    <span class="text-xs font-normal leading-[30px]">To:</span>
+                    <input
+                      type="text"
+                      @click="handleShowCalander"
+                      :value="dateValue.endDate"
+                      placeholder="dd/mm/yyyy"
+                      class="outline-none border border-secondary-light rounded px-[10px] py-1 placeholder:text-[10px] placeholder:font-normal text-[10px] font-normal max-w-[90px]"
+                    />
+                  </label>
+                </div>
+                <div v-if="showCalander" class="z-10 absolute">
+                  <vue-tailwind-datepicker
+                    v-model="dateValue"
+                    as-single
+                    use-range
+                    no-input=""
+                    separator=" to "
+                    :auto-apply="false"
+                    :options="options"
+                    :formatter="formatter"
+                    :shortcuts="false"
+                  />
+                </div>
+              </div>
               <div class="py-2 px-1 flex gap-[4px] max-w-[320px] flex-wrap">
                 <span
                   class="px-3 py-2 border border-secondary-light rounded-3xl cursor-pointer text-xs font-semibold tracking-[0.17px]"
@@ -205,7 +253,7 @@
                   <input
                     type="text"
                     placeholder="Starting Value"
-                    class="outline-none border border-secondary-light rounded px-[10px] py-2 placeholder:text-[10px] placeholder:font-normal text-[10px] font-normal max-w-[90px]"
+                    class="outline-none border border-secondary-light rounded px-[10px] py-1 placeholder:text-[10px] placeholder:font-normal text-[10px] font-normal max-w-[90px]"
                   />
                 </label>
                 <label for="input" class="flex gap-2 items-center">
@@ -213,7 +261,7 @@
                   <input
                     type="text"
                     placeholder="Starting Value"
-                    class="outline-none border border-secondary-light rounded px-[10px] py-2 placeholder:text-[10px] placeholder:font-normal text-[10px] font-normal max-w-[90px]"
+                    class="outline-none border border-secondary-light rounded px-[10px] py-1 placeholder:text-[10px] placeholder:font-normal text-[10px] font-normal max-w-[90px]"
                   />
                 </label>
               </div>
@@ -348,7 +396,12 @@
           <div
             class="flex gap-6 text-sm font-medium capitalize tracking-[0.4px]"
           >
-            <span class="px-4 py-2"> Clear Filter </span>
+            <span
+              @click="() => console.log('Clear Filter')"
+              class="px-4 py-2 cursor-pointer"
+            >
+              Clear Filter
+            </span>
             <button class="px-4 py-2 bg-[#FFCF25] rounded-md">
               Save Filters
             </button>
@@ -455,20 +508,14 @@
               </span>
               <span class="text-white" v-else-if="typeof value === 'number'">
                 <span
-                  v-if="value >= 4000"
-                  class="bg-[#C92B2B] px-3 py-1 text-base font-medium rounded"
+                  :class="{
+                    'bg-[#C92B2B]': value >= 4000,
+                    'bg-[#DC9617]': value >= 2000 && value < 4000,
+                    'bg-success': value > 0 && value < 2000,
+                  }"
+                  class="px-3 py-1 text-base font-medium rounded"
                   >{{ value }}
                 </span>
-                <span
-                  v-else-if="value >= 2000 && value < 4000"
-                  class="bg-[#DC9617] px-3 py-1 text-base font-medium rounded"
-                  >{{ value }}
-                </span>
-                <span
-                  v-else
-                  class="bg-success px-3 py-1 text-base font-medium rounded"
-                  >{{ value }}</span
-                >
               </span>
               <span v-else-if="value === 'Pending'">
                 <div class="flex gap-[10px] items-center">
@@ -505,7 +552,8 @@
                 </span>
                 <span
                   class="p-2 border border-secondary-light rounded cursor-pointer"
-                  ><svg
+                >
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="21"
@@ -528,7 +576,8 @@
                 </span>
                 <span
                   class="p-2 border border-secondary-light rounded cursor-pointer"
-                  ><svg
+                >
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="21"
@@ -550,19 +599,29 @@
   </div>
 </template>
 <script setup>
-import { ref, watch } from "vue";
+import { ref, onMounted, onUnmounted, watch } from "vue";
+import reviewRequest from "../data/reviewRequestData";
+import VueTailwindDatepicker from "vue-tailwind-datepicker";
+
 let showSearchDropdown = ref(false);
 let showFilterDropdown = ref(false);
+let showCalander = ref(false);
+const dropdown = ref(null);
 
-const showSearchDropdownSetter = () => {
-  showFilterDropdown.value = false;
-  showSearchDropdown.value = !showSearchDropdown.value;
+//
+const dateValue = ref({
+  startDate: "",
+  endDate: "",
+});
+const formatter = ref({
+  date: "DD MMM YYYY",
+  month: "MMM",
+});
+const handleShowCalander = () => {
+  console.log(showCalander.value);
+  showCalander.value = !showCalander.value;
 };
-const showFilterDropdownSetter = () => {
-  showSearchDropdown.value = false;
-  showFilterDropdown.value = !showFilterDropdown.value;
-};
-import reviewRequest from "../data/reviewRequestData";
+//
 
 const tableHeader = [
   "Last Updated",
@@ -583,9 +642,48 @@ const recentFilters = [
   "Bilal",
   "Oracle Ltd",
 ];
+
+const closeDropdownOnOutsideClick = (event) => {
+  showSearchDropdown.value = false;
+  showFilterDropdown.value = false;
+};
+const preventClose = (event) => {
+  event.stopPropagation();
+};
+onMounted(() => {
+  document.addEventListener("click", closeDropdownOnOutsideClick);
+});
+onUnmounted(() => {
+  document.removeEventListener("click", closeDropdownOnOutsideClick);
+});
+const showSearchDropdownSetter = () => {
+  showFilterDropdown.value = false;
+  showSearchDropdown.value = !showSearchDropdown.value;
+};
+const showFilterDropdownSetter = () => {
+  showSearchDropdown.value = false;
+  showFilterDropdown.value = !showFilterDropdown.value;
+};
+const options = ref({
+  footer: {
+    apply: "Save",
+    cancel: "Cancel",
+  },
+});
+watch(dateValue, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    handleShowCalander();
+  }
+});
 </script>
 
 <style scoped>
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #b6b6b6;
+  border: 1;
+}
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
@@ -600,7 +698,11 @@ input[type="checkbox"] {
   display: grid;
   place-content: center;
 }
-
+input[type="checkbox"]:focus {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+}
 input[type="checkbox"]:checked {
   background-color: #f0c10e;
   border: 1px solid #f0c10e;
