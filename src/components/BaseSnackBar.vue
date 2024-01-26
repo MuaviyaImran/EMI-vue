@@ -33,6 +33,6 @@ import { generateBaseSnackBarClasses } from "../utils";
 const slots = useSlots();
 const props = defineProps(["variant", "type", "showSnackbar"]);
 const emit = defineEmits(["handleSnackbarHide"]);
-const classes = generateBaseSnackBarClasses(props.type, props.variant);
 const hideSnackBar = () => emit("handleSnackbarHide");
+const classes = generateBaseSnackBarClasses(props.type, props.variant);
 </script>
