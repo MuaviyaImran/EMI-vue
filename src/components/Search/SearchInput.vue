@@ -16,8 +16,14 @@
       v-if="props.showDropDown"
     >
       <span
+        v-if="searchResults.length !== 0"
         class="text-base font-medium tracking-[0.15px] text-secondary-semi-dark"
         >Recent Searches</span
+      >
+      <span
+        v-else
+        class="text-sm font-medium tracking-[0.15px] text-secondary-semi-dark"
+        >No Record Found...</span
       >
       <div
         v-for="(result, index) in searchResults"
