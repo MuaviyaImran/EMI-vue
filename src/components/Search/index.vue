@@ -13,13 +13,10 @@
         <div
           class="relative flex gap-[2px] basis-[95%] rounded-lg border border-secondary-light"
         >
-          <input
-            @click="($e) => showSearchDropdownSetter($e)"
-            @click.stop="preventClose"
-            ref="dropdown"
-            class="search-input py-2 basis-[93%] border-0 rounded px-3 m-1 focus:outline-none focus:ring-none text-base font-normal text-[#808080] placeholder:text-base placeholder:font-normal placeholder:text-[#808080]"
-            type="text"
-            placeholder="Search by Name, Ticket ID, or Email..."
+          <SearchInput
+            :preventClose="preventClose"
+            :showDropDown="showSearchDropdown"
+            @showSearchDropdownSetter="showSearchDropdownSetter"
           />
           <button
             @click="
@@ -42,46 +39,6 @@
               />
             </svg>
           </button>
-          <!-- Search Dropdown -->
-          <div
-            @click.stop="preventClose"
-            v-if="showSearchDropdown"
-            class="px-4 py-3 flex flex-col gap-1 absolute w-full mt-12 border border-secondary-light drop-shadow-2xl rounded z-10 bg-white"
-          >
-            <span
-              class="text-base font-medium traching-[0.15px] text-secondary-semi-dark"
-            >
-              Recent Filters
-            </span>
-            <div
-              v-for="(filter, index) in recentFilters"
-              :key="filter + index"
-              class="group"
-            >
-              <div
-                :id="filter + index"
-                class="group-hover:bg-gray-100 group-focus:bg-gray-100 rounded-md flex gap-3 px-3 p-2 cursor-pointer"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M13 3C8.03 3 4 7.03 4 12H1L4.89 15.89L4.96 16.03L9 12H6C6 8.13 9.13 5 13 5C16.87 5 20 8.13 20 12C20 15.87 16.87 19 13 19C11.07 19 9.32 18.21 8.06 16.94L6.64 18.36C8.27 19.99 10.51 21 13 21C17.97 21 22 16.97 22 12C22 7.03 17.97 3 13 3ZM12 8V13L16.28 15.54L17 14.33L13.5 12.25V8H12Z"
-                    fill="#5F5E5E"
-                  />
-                </svg>
-                <span
-                  class="text-base font-normal text-secondary-semi-dark group-hover:text-secondary"
-                >
-                  {{ filter }}
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
         <button
           @click="showFilterDropdownSetter"
@@ -601,12 +558,12 @@
 </template>
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from "vue";
-import reviewRequest from "../data/reviewRequestData";
+import reviewRequest from "../../data/reviewRequestData";
 import VueTailwindDatepicker from "vue-tailwind-datepicker";
-
-let showSearchDropdown = ref(false);
-let showFilterDropdown = ref(false);
-let showCalander = ref(false);
+import SearchInput from "./SearchInput.vue";
+const showSearchDropdown = ref(false);
+const showFilterDropdown = ref(false);
+const showCalander = ref(false);
 const dropdown = ref(null);
 
 //
@@ -619,10 +576,8 @@ const formatter = ref({
   month: "MMM",
 });
 const handleShowCalander = () => {
-  console.log(showCalander.value);
   showCalander.value = !showCalander.value;
 };
-//
 
 const tableHeader = [
   "Last Updated",
@@ -634,20 +589,12 @@ const tableHeader = [
   "Status",
   "Actions",
 ];
-const recentFilters = [
-  "Verified Requests",
-  "Pakistan",
-  "IND ABC",
-  "COR 123",
-  "Ahmad",
-  "Bilal",
-  "Oracle Ltd",
-];
 
 const closeDropdownOnOutsideClick = (event) => {
   showSearchDropdown.value = false;
   showFilterDropdown.value = false;
 };
+
 const preventClose = (event) => {
   event.stopPropagation();
 };
@@ -658,14 +605,13 @@ onUnmounted(() => {
   document.removeEventListener("click", closeDropdownOnOutsideClick);
 });
 
-const showSearchDropdownSetter = (e) => {
-  showFilterDropdown.value = false;
-  showSearchDropdown.value = !showSearchDropdown.value;
-};
-
 const showFilterDropdownSetter = () => {
   showSearchDropdown.value = false;
   showFilterDropdown.value = !showFilterDropdown.value;
+};
+const showSearchDropdownSetter = (value) => {
+  showFilterDropdown.value = false;
+  showSearchDropdown.value = !value;
 };
 
 const options = ref({
@@ -704,7 +650,7 @@ input[type="checkbox"] {
   place-content: center;
 }
 input[type="checkbox"]:focus {
-  border: 0;
+  border: 1;
   outline: none;
   box-shadow: none;
 }
