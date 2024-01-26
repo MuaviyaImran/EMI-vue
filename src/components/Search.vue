@@ -9,12 +9,12 @@
 
     <div class="px-2">
       <!-- Search / Filter -->
-      <div class="my-4 flex gap-1 relative">
+      <div class="my-4 flex gap-1">
         <div
-          class="flex gap-[2px] basis-[95%] rounded-lg border border-secondary-light"
+          class="relative flex gap-[2px] basis-[95%] rounded-lg border border-secondary-light"
         >
           <input
-            @click="showSearchDropdownSetter"
+            @click="($e) => showSearchDropdownSetter($e)"
             @click.stop="preventClose"
             ref="dropdown"
             class="search-input py-2 basis-[93%] border-0 rounded px-3 m-1 focus:outline-none focus:ring-none text-base font-normal text-[#808080] placeholder:text-base placeholder:font-normal placeholder:text-[#808080]"
@@ -42,6 +42,46 @@
               />
             </svg>
           </button>
+          <!-- Search Dropdown -->
+          <div
+            @click.stop="preventClose"
+            v-if="showSearchDropdown"
+            class="px-4 py-3 flex flex-col gap-1 absolute w-full mt-12 border border-secondary-light drop-shadow-2xl rounded z-10 bg-white"
+          >
+            <span
+              class="text-base font-medium traching-[0.15px] text-secondary-semi-dark"
+            >
+              Recent Filters
+            </span>
+            <div
+              v-for="(filter, index) in recentFilters"
+              :key="filter + index"
+              class="group"
+            >
+              <div
+                :id="filter + index"
+                class="group-hover:bg-gray-100 group-focus:bg-gray-100 rounded-md flex gap-3 px-3 p-2 cursor-pointer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M13 3C8.03 3 4 7.03 4 12H1L4.89 15.89L4.96 16.03L9 12H6C6 8.13 9.13 5 13 5C16.87 5 20 8.13 20 12C20 15.87 16.87 19 13 19C11.07 19 9.32 18.21 8.06 16.94L6.64 18.36C8.27 19.99 10.51 21 13 21C17.97 21 22 16.97 22 12C22 7.03 17.97 3 13 3ZM12 8V13L16.28 15.54L17 14.33L13.5 12.25V8H12Z"
+                    fill="#5F5E5E"
+                  />
+                </svg>
+                <span
+                  class="text-base font-normal text-secondary-semi-dark group-hover:text-secondary"
+                >
+                  {{ filter }}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
         <button
           @click="showFilterDropdownSetter"
@@ -66,45 +106,6 @@
       </div>
 
       <!-- Filter Dropdown -->
-      <div
-        @click.stop="preventClose"
-        v-if="showSearchDropdown"
-        class="px-4 py-3 flex flex-col gap-1 absolute min-w-[1078px] -mt-5 border border-secondary-light drop-shadow-2xl rounded z-10 bg-white"
-      >
-        <span
-          class="text-base font-medium traching-[0.15px] text-secondary-semi-dark"
-        >
-          Recent Filters
-        </span>
-        <div
-          v-for="(filter, index) in recentFilters"
-          :key="filter + index"
-          class="group"
-        >
-          <div
-            class="group-hover:bg-secondary-light rounded-md flex gap-3 px-3 p-2 cursor-pointer"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M13 3C8.03 3 4 7.03 4 12H1L4.89 15.89L4.96 16.03L9 12H6C6 8.13 9.13 5 13 5C16.87 5 20 8.13 20 12C20 15.87 16.87 19 13 19C11.07 19 9.32 18.21 8.06 16.94L6.64 18.36C8.27 19.99 10.51 21 13 21C17.97 21 22 16.97 22 12C22 7.03 17.97 3 13 3ZM12 8V13L16.28 15.54L17 14.33L13.5 12.25V8H12Z"
-                fill="#5F5E5E"
-              />
-            </svg>
-            <span
-              class="text-base font-normal text-secondary-semi-dark group-hover:text-secondary"
-            >
-              {{ filter }}
-            </span>
-          </div>
-        </div>
-      </div>
-
       <div
         v-if="showFilterDropdown"
         @click.stop="preventClose"
@@ -656,20 +657,24 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener("click", closeDropdownOnOutsideClick);
 });
-const showSearchDropdownSetter = () => {
+
+const showSearchDropdownSetter = (e) => {
   showFilterDropdown.value = false;
   showSearchDropdown.value = !showSearchDropdown.value;
 };
+
 const showFilterDropdownSetter = () => {
   showSearchDropdown.value = false;
   showFilterDropdown.value = !showFilterDropdown.value;
 };
+
 const options = ref({
   footer: {
     apply: "Save",
     cancel: "Cancel",
   },
 });
+
 watch(dateValue, (newValue, oldValue) => {
   if (newValue !== oldValue) {
     handleShowCalander();
