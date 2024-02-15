@@ -24,7 +24,7 @@ export default {
         warning: { DEFAULT: "#FB9F34", light: "#F9E6D0" },
         danger: { DEFAULT: "#B33A3A", light: "#F3DFDF" },
         info: { DEFAULT: "#2196F3", light: "#EBF4FF" },
-        "border-primary":{DEFAULT:"#e3e3e3"}
+        "border-primary": { DEFAULT: "#e3e3e3" },
       },
       boxShadow: {
         xs: "0px 0px 5px 0px rgba(166, 176, 184, 0.39)",

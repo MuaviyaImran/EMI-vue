@@ -618,4 +618,10 @@ input[type="checkbox"]::before {
   transition: 120ms transform ease-in-out;
   box-shadow: inset 1em 1em white;
 }
+/* input[type="radio"]:checked {
+  background-color: #f0c10e !important;
+  border: 1px solid #f0c10e !important;
+  outline: 1px solid #f0c10e !important;
+  color: white;
+} */
 </style>

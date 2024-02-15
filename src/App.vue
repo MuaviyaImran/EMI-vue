@@ -83,6 +83,11 @@
           <template #text>Search</template>
         </BaseButton>
       </router-link>
+      <router-link to="/transactionHistory"
+        ><BaseButton variant="outline" type="secondary">
+          <template #text>Transaction History</template>
+        </BaseButton>
+      </router-link>
     </div>
     <div class="my-5">
       <RouterView />

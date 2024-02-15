@@ -12,6 +12,8 @@ import CustomerDetailDropdown from "../views/customerDetailDropdown.vue";
 import YearlyMonthlyFields from "../views/yearlyMonthlyFields.vue";
 import TransfersInvoice from "../views/transfersInvoice.vue";
 import Search from "../views/search.vue";
+import TransactionHistory from "../views/transactionHistory.vue";
+
 const routes = [
   {
     path: "/header",
@@ -68,6 +70,10 @@ const routes = [
   {
     path: "/sendEmail",
     component: SendEmail,
+  },
+  {
+    path: "/transactionHistory",
+    component: TransactionHistory,
   },
 ];
 
