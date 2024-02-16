@@ -1,8 +1,10 @@
 <template>
   <div class="mx-auto max-w-[1200px] flex mt-2 justify-center">
-    <Search />
+    <!-- <Search /> -->
+    <TestComp />
   </div>
 </template>
 <script setup>
 import Search from "../components/Search.vue";
+import TestComp from "../components/TestComp.vue";
 </script>
