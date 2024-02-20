@@ -1,73 +1,78 @@
-import Header from "../views/header.vue";
-import SideBar from "../views/baseSidebar.vue";
-import Stepper from "../views/stepper.vue";
-import Dropdown from "../views/dropdown.vue";
-import OTP from "../views/otp.vue";
-import LivenessPermition from "../views/livenessPermition.vue";
-import LivenessInitiate from "../views/livenessInitiate.vue";
-import LivenessLoading from "../views/livenessLoading.vue";
-import SendEmail from "../views/sendEmail.vue";
-import RequiredDocumentTable from "../views/requiredDocumentTable.vue";
-import CustomerDetailDropdown from "../views/customerDetailDropdown.vue";
-import YearlyMonthlyFields from "../views/yearlyMonthlyFields.vue";
-import TransfersInvoice from "../views/transfersInvoice.vue";
-import Search from "../views/search.vue";
+import Header from '../views/header.vue';
+import SideBar from '../views/baseSidebar.vue';
+import Stepper from '../views/stepper.vue';
+import Dropdown from '../views/dropdown.vue';
+import OTP from '../views/otp.vue';
+import LivenessPermition from '../views/livenessPermition.vue';
+import LivenessInitiate from '../views/livenessInitiate.vue';
+import LivenessLoading from '../views/livenessLoading.vue';
+import SendEmail from '../views/sendEmail.vue';
+import RequiredDocumentTable from '../views/requiredDocumentTable.vue';
+import CustomerDetailDropdown from '../views/customerDetailDropdown.vue';
+import YearlyMonthlyFields from '../views/yearlyMonthlyFields.vue';
+import TransfersInvoice from '../views/transfersInvoice.vue';
+import Search from '../views/search.vue';
+import TagPicker from '../views/tagPicker.vue';
 const routes = [
   {
-    path: "/header",
+    path: '/header',
     component: Header,
   },
   {
-    path: "/sidebar",
+    path: '/sidebar',
     component: SideBar,
   },
   {
-    path: "/stepper",
+    path: '/stepper',
     component: Stepper,
   },
   {
-    path: "/search",
+    path: '/search',
     component: Search,
   },
   {
-    path: "/otp",
+    path: '/otp',
     component: OTP,
   },
   {
-    path: "/yearly-monthly",
+    path: '/yearly-monthly',
     component: YearlyMonthlyFields,
   },
   {
-    path: "/transfersInvoice",
+    path: '/transfersInvoice',
     component: TransfersInvoice,
   },
   {
-    path: "/dropdown",
+    path: '/dropdown',
     component: Dropdown,
   },
   {
-    path: "/customerDetailDropdown",
+    path: '/customerDetailDropdown',
     component: CustomerDetailDropdown,
   },
   {
-    path: "/livenessPermition",
+    path: '/livenessPermition',
     component: LivenessPermition,
   },
   {
-    path: "/livenessInitiate",
+    path: '/livenessInitiate',
     component: LivenessInitiate,
   },
   {
-    path: "/livenessLoading",
+    path: '/livenessLoading',
     component: LivenessLoading,
   },
   {
-    path: "/requiredDocumentTable",
+    path: '/requiredDocumentTable',
     component: RequiredDocumentTable,
   },
   {
-    path: "/sendEmail",
+    path: '/sendEmail',
     component: SendEmail,
+  },
+  {
+    path: '/tagPicker',
+    component: TagPicker,
   },
 ];
 
