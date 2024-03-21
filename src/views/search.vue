@@ -1,7 +1,6 @@
 <template>
   <div class="mx-auto max-w-[1200px] flex mt-2 justify-center">
-    <!-- <Search /> -->
-    <TestComp />
+    <Search />
   </div>
 </template>
 <script setup>
