@@ -28,6 +28,7 @@
     "vue-html2pdf": "^1.8.0",
     "vue-router": "^4.2.5",
     "vue-tailwind-datepicker": "^1.6.1",
+    "vue3-easy-data-table": "^1.5.47",
     "vue3-otp-input": "^0.4.1"
   },
   "devDependencies": {

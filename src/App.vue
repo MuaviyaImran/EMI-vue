@@ -88,6 +88,11 @@
           <template #text>Tags Input</template>
         </BaseButton>
       </router-link>
+      <router-link to="/allUserTableAdmin"
+        ><BaseButton variant="outline" type="secondary">
+          <template #text>All User Table Admin</template>
+        </BaseButton>
+      </router-link>
     </div>
     <div class="my-5">
       <RouterView />
@@ -112,10 +117,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { RouterView } from 'vue-router';
-import BaseSnackBar from './components/BaseSnackBar.vue';
-import BaseButton from './components/BaseButton.vue';
+import { ref } from "vue";
+import { RouterView } from "vue-router";
+import BaseSnackBar from "./components/BaseSnackBar.vue";
+import BaseButton from "./components/BaseButton.vue";
 
 const showSnackbar = ref(false);
 const handleSnackbarClick = () => {
