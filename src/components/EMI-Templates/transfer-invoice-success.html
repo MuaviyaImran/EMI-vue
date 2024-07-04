@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      padding: 0;
+      max-width: 575px;
+      font-family: "Roboto", sans-serif;
+      color: #333;
+      z-index: 10;
+    }
+    .container {
+      position: relative;
+      z-index: 8;
+      padding: 20px;
+      border-radius: 8px;
+      border: 0.5px solid rgba(215, 218, 224, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .border {
+      padding: 6px 8px;
+      border-radius: 8px;
+      border: 0.5px solid rgba(215, 218, 224, 0.5);
+    }
+    p {
+      margin: 0;
+    }
+
+    section {
+      margin: 0;
+      padding: 0;
+    }
+
+    .table-key,
+    .address-value {
+      font-weight: 400;
+      line-height: 14px;
+      font-size: 10px;
+    }
+    .address-value {
+      text-align: right;
+      width: 150px;
+    }
+
+    .table-value {
+      font-size: 9px;
+      color: #5f5e5e;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .table-header {
+      text-align: start;
+      flex-basis: 50%;
+      font-size: 10px;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    .table-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+    }
+    .third-table-row {
+      display: flex;
+      gap: 28px;
+      width: 100%;
+    }
+
+    .horziontal-line {
+      height: 0.5px;
+      width: 100%;
+      background-color: rgb(215, 218, 224);
+      opacity: 0.5;
+    }
+
+    .uppercase {
+      text-transform: uppercase;
+    }
+    .description-main {
+      display: flex;
+      justify-content: space-between;
+      gap: 10%;
+    }
+    .ref-invoice {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .details {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+    .details-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .transaction-amount {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: normal;
+    }
+    .commision-value {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: normal;
+    }
+    .detail-section {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .transaction-id {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.155px;
+    }
+    .transaction-id-heading {
+      margin-left: 30px;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 150%;
+      letter-spacing: -0.1px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .table-row {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+    }
+    .table {
+      width: 100%;
+      flex-grow: 1;
+      display: flex;
+      gap: 4px;
+    }
+    .footer {
+      margin-top: 25px;
+    }
+    .footer-item {
+      font-size: 9px;
+      font-weight: 500;
+      line-height: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-top: 2px;
+    }
+    a {
+      color: #197dcc;
+      text-decoration-color: #197dcc;
+    }
+    .table-row-data {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .text-bold-black {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .status-badge {
+      position: absolute;
+      transform: rotate(-45deg);
+      border-bottom: 20px solid #38a457;
+      border-top: 50px solid transparent;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      height: 0;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: 0.1px;
+      top: -26px;
+      left: -30px;
+      margin-top: 10px;
+    }
+  </style>
+
+  <body>
+    <div class="status-badge">Completed</div>
+    <div id="container" class="container">
+      <!-- Header -->
+      <div class="header">
+        <p>
+          <span class="transaction-id-heading"> SEPA Transfer</span>
+          <span class="transaction-id"> - ID: SE-20240130153045-1234567-9</span>
+        </p>
+        <img
+          height="19"
+          width="120"
+          src="https://i.ibb.co/PzX83BZ/logo.png"
+          alt="Your golden key to success"
+        />
+      </div>
+
+      <!-- 1st Section -->
+      <section class="detail-section">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <p style="display: flex; flex-direction: column; gap: 4px">
+            <span class="uppercase table-value" style="font-weight: 500"
+              >Amount (EUR)
+            </span>
+            <span class="transaction-amount">12.00 </span>
+          </p>
+          <p style="display: flex; flex-direction: column; gap: 4px">
+            <span class="uppercase table-value" style="font-weight: 500">
+              Commission (EUR)
+            </span>
+            <span class="commision-value"> 5.00 </span>
+          </p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 3px">
+          <div class="border details-main">
+            <p
+              class="details"
+              style="
+                padding-bottom: 4px;
+                border-bottom: 1px solid rgba(215, 218, 224, 0.5);
+              "
+            >
+              <span class="uppercase table-value"> Request Date </span>
+              <span class="table-value text-bold-black">01 Aug, 2023 </span>
+            </p>
+            <p class="details">
+              <span class="uppercase table-value"> Value Date </span>
+              <span class="table-value text-bold-black">15 Aug, 2023 </span>
+            </p>
+          </div>
+          <div class="border ref-invoice">
+            <div style="width: 178px">
+              <p style="display: flex; flex-direction: column; gap: 8px">
+                <span class="uppercase table-value"> Reference Message </span>
+                <span class="table-value text-bold-black">Invoice ID </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Horizontal Line -->
+      <div class="horziontal-line"></div>
+
+      <!-- Description Section -->
+      <div class="border description-main">
+        <span class="table-key uppercase">Description</span>
+        <p class="table-value" style="flex-basis: 80%; line-height: 120%">
+          This is a placeholder text designed to demonstrate how the actual
+          content will fill the designated container. As data or information is
+          integrated, it will seamlessly occupy this space, providing a
+          comprehensive description tailored to the context and purpose of the
+          container.
+        </p>
+      </div>
+
+      <!-- First Table Row -->
+      <div class="table-row">
+        <span class="table-header uppercase">Transfer from</span>
+        <span class="table-header uppercase">Payer bank details</span>
+      </div>
+      <div class="table-row">
+        <div class="table">
+          <div class="table-detail border">
+            <p class="table-row-data">
+              <span class="table-value"> Full Name </span>
+              <span class="table-key">Ms. Bellum </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> IBAN </span>
+              <span class="table-key">BK9876543217864039 </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> Address </span>
+              <span class="address-value"> Address Somewhere 123 ST </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> City / Post Code </span>
+              <span class="table-key"> NJ / 123 456 </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value">
+                State / Province / Region / District
+              </span>
+              <span class="table-key"> That Place </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> Country </span>
+              <span class="table-key">Country </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="table">
+          <div class="table-detail border">
+            <p class="table-row-data">
+              <span class="table-value"> Bank Name </span>
+              <span class="table-key">Zolvat </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> BIC / SWIFT Code </span>
+              <span class="table-key">BOFAUS3N </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <span class="table-value"> Address </span>
+              <span class="address-value">
+                Arch. Makariou III, 215 MAXIMOS PLAZA, Flat/Office 3
+              </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> City / Post Code </span>
+              <span class="table-key"> Limassol, 3027 </span>
+            </p>
+
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> Country </span>
+              <span class="table-key">Country </span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Table Row -->
+      <div class="table-row">
+        <span class="table-header uppercase">transfer to</span>
+        <span class="table-header uppercase">Beneficiary Bank Details</span>
+      </div>
+      <div class="table-row">
+        <div class="table">
+          <div class="table-detail border">
+            <p class="table-row-data">
+              <span class="table-value"> Full Name </span>
+              <span class="table-key">David Ash </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> IBAN </span>
+              <span class="table-key">BK9876543217864039 </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> Address </span>
+              <span class="address-value"> Address Somewhere 123 ST </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> City / Post Code </span>
+              <span class="table-key"> NJ / 123 456 </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value">
+                State / Province / Region / District
+              </span>
+              <span class="table-key"> That Place </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> Country </span>
+              <span class="table-key">Country </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="table">
+          <div class="table-detail border">
+            <p class="table-row-data">
+              <span class="table-value"> Bank Name </span>
+              <span class="table-key">Zolvat </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> BIC / SWIFT Code </span>
+              <span class="table-key">BOFAUS3N </span>
+            </p>
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> ABA / RTN / Sort Code </span>
+              <span class="address-value"> 12765 </span>
+            </p>
+
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> Address </span>
+              <span class="address-value"> Address Somewhere 123 ST </span>
+            </p>
+
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> City / Post Code </span>
+              <span class="table-key"> Limassol, 3027 </span>
+            </p>
+
+            <div class="horziontal-line"></div>
+            <p class="table-row-data">
+              <span class="table-value"> Country </span>
+              <span class="table-key">Country </span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Table Row -->
+      <div class="table-row">
+        <span class="table-header uppercase">Intermediary bank Details</span>
+      </div>
+      <div class="table-row">
+        <div class="table">
+          <div class="third-table-row border" style="display: flex">
+            <div class="table-detail">
+              <p class="table-row-data">
+                <span class="table-value"> Bank Name </span>
+                <span class="table-key">BOFA </span>
+              </p>
+              <div class="horziontal-line"></div>
+              <p class="table-row-data">
+                <span class="table-value"> BIC / SWIFT Code </span>
+                <span class="table-key">BOFAUS3N </span>
+              </p>
+              <div class="horziontal-line"></div>
+              <p class="table-row-data">
+                <span class="table-value"> IBAN </span>
+                <span class="address-value"> BK9876543217864039 </span>
+              </p>
+              <div class="horziontal-line"></div>
+              <p class="table-row-data">
+                <span class="table-value"> ABA / RTN / Sort Code </span>
+                <span class="address-value"> 12765 </span>
+              </p>
+            </div>
+            <div class="table-detail">
+              <p class="table-row-data">
+                <span class="table-value"> Address </span>
+                <span class="address-value"> Address Somewhere 123 ST </span>
+              </p>
+
+              <div class="horziontal-line"></div>
+              <p class="table-row-data">
+                <span class="table-value"> City / Post Code </span>
+                <span class="table-key"> Limassol, 3027 </span>
+              </p>
+
+              <div class="horziontal-line"></div>
+              <p class="table-row-data">
+                <span class="table-value"> Country </span>
+                <span class="table-key">Country </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="horziontal-line"></div>
+        <div class="footer-item">
+          <p>Notice of Liability and Error Reporting:</p>
+          <p style="font-weight: 400">
+            Please review this statement promptly. If you believe there has been
+            an error in any transaction or unauthorized use of your account, you
+            must notify Zolvat LTD immediately. Failure to report discrepancies
+            may result in the transaction being deemed accurate and accepted by
+            you. For more details on error reporting and liability limitations,
+            please refer to our <a href="">Terms and Conditions</a>.
+          </p>
+        </div>
+        <div class="footer-item">
+          <p>Legal and Regulatory Compliance:</p>
+          <p style="font-weight: 400">
+            This statement is subject to the terms and conditions under which
+            Zolvat LTD provides its services. The provision and use of Zolvat
+            LTD's services are governed by the laws of Cyprus and are in
+            compliance with relevant EU regulations. We are committed to
+            protecting your privacy and the security of your personal
+            information as detailed in our <a href="">Privacy Policy</a>. Should
+            you have any questions or require assistance, please contact our
+            customer service team as indicated on our
+            <a href="">Contact Information Page</a>. By using our services, you
+            acknowledge that you have read, understood, and agreed to the
+            aforementioned terms.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

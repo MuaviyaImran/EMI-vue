@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transfer Email</title>
+  </head>
+  <style>
+    body {
+      font-family: Roboto;
+    }
+    .indexText {
+      color: #333;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+
+    .status {
+      color: #38a457;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .row {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 30px 10px 30px;
+      border-bottom: 1px solid #e7ebf4;
+    }
+    .row-inverse {
+      width: 100%;
+      display: flex;
+      gap: 6px;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-self: stretch;
+    }
+    .helpText {
+      color: #333;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 23px;
+    }
+
+    .button {
+      display: flex;
+      padding: 10px 24px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      background: #ffcf25;
+      border: none;
+      cursor: pointer;
+    }
+    .address {
+      text-align: right;
+      width: 75%;
+    }
+    .review-status-base {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 28.13px;
+    }
+    .review-status-text {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 28.13px;
+      text-align: left;
+    }
+    .transfer-status-base {
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: 0.1px;
+    }
+    .review-status-approved {
+      color: var(--Secondary-Slate-Gray, #38a457);
+    }
+    .review-status-rejected {
+      color: var(--Secondary-Slate-Gray, #d92d20);
+    }
+    .transfer-status-approved {
+      background-color: #38a457;
+      color: white;
+    }
+    .transfer-status-pending {
+      background-color: #fb9f34;
+      color: white;
+    }
+    .transfer-status-rejected {
+      background-color: #d92d20;
+      color: white;
+    }
+    .transfer-status-onhold {
+      background-color: #e3e3e3;
+      color: #333;
+    }
+  </style>
+  <body>
+    <div style="background-color: white; padding: 20px 20px; max-width: 895px">
+      <section style="margin-top: 30px">
+        <span class="indexText">
+          Dear {{.TransferDetails.TransferFrom.Name}},
+        </span>
+        <br />
+        <span class="review-status-text">Your transfer request has been </span>
+        <span class="review-status-base">Approved</span>
+      </section>
+      <section>
+        <div>
+          <h2
+            class="indexText"
+            style="
+              background-color: rgba(255, 207, 37, 0.2);
+              padding: 5px 10px 5px 10px;
+            "
+          >
+            Transfer Details
+          </h2>
+          <div class="row">
+            <span>Status</span>
+            <span class="transfer-status-base"> Approved </span>
+          </div>
+          <div class="row">
+            <span>Transfer Type</span>
+            <span>{{.TransferDetails.Type}} Transfer</span>
+          </div>
+          <div class="row">
+            <span>Transfer ID</span>
+            <span>{{.TransferDetails.TransferID}}</span>
+          </div>
+          <div class="row">
+            <div class="row-inverse">
+              <div style="display: flex; justify-content: space-between">
+                <span>Amount (EUR)</span>
+                <span>{{.TransferDetails.Amount}} EUR</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 20px;
+                "
+              >
+                <span>Commission (EUR)</span>
+                <span>{{.TransferDetails.FeeCharged}} EUR</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <span>Reference Message</span>
+            <span>{{.TransferDetails.ReferenceMessage}}</span>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div>
+          <h2
+            class="indexText"
+            style="
+              background-color: rgba(255, 207, 37, 0.2);
+              padding: 5px 10px 5px 10px;
+            "
+          >
+            From Account
+          </h2>
+          <div class="row">
+            <span>Full Name</span>
+            <span>{{.TransferDetails.TransferFrom.Name}}</span>
+          </div>
+          <div class="row">
+            <span>Bank Name</span>
+            <span>{{.TransferDetails.TransferFrom.BankName}}</span>
+          </div>
+          <div class="row">
+            <span>IBAN</span>
+            <span>{{.TransferDetails.TransferFrom.IBAN}}</span>
+          </div>
+          <div class="row">
+            <span>BIC / SWIFT Code</span>
+            <span>{{.TransferDetails.TransferFrom.BIC}}</span>
+          </div>
+          <div class="row">
+            <span>Address</span>
+            <span class="address">
+              {{.TransferDetails.TransferFrom.Address}}</span
+            >
+          </div>
+        </div>
+      </section>
+      <section>
+        <div>
+          <h2
+            class="indexText"
+            style="
+              background-color: rgba(255, 207, 37, 0.2);
+              padding: 5px 10px 5px 10px;
+            "
+          >
+            To Account
+          </h2>
+          <div class="row">
+            <span>Full Name</span>
+            <span>{{.TransferDetails.TransferTo.Name}}</span>
+          </div>
+          <div class="row">
+            <span>Bank Name</span>
+            <span>{{.TransferDetails.TransferTo.BankName}}</span>
+          </div>
+          <div class="row">
+            <span>IBAN</span>
+            <span>{{.TransferDetails.TransferTo.IBAN}}</span>
+          </div>
+          <div class="row">
+            <span>BIC / SWIFT Code</span>
+            <span>{{.TransferDetails.TransferTo.BIC}}</span>
+          </div>
+          <div class="row">
+            <span>Address</span>
+            <span class="address">{{.TransferDetails.TransferTo.Address}}</span>
+          </div>
+        </div>
+      </section>
+      <br />
+      <span class="helpText">
+        Your transfer request has been sent to our back office and will be
+        processed in the order it was received. This usually takes up to 24
+        hours.
+      </span>
+      <br />
+      <span class="helpText">
+        You can track the status of your transfer and view detailed information
+        by clicking on the link below.
+      </span>
+      <br />
+      <br />
+      <button class="button">
+        <a style="text-decoration: none; color: black" href="{{.Link}}">
+          View Transfer Detail
+        </a>
+      </button>
+      <br />
+      <br />
+      <span class="helpText">
+        If you have any questions or need further assistance, please feel free
+        to contact us via the messaging interface in your account. Additionally,
+        our FAQs section offers immediate guidance on common queries and is a
+        valuable resource for any further information you may need.
+      </span>
+      <p class="helpText">Thank you for choosing Zolvat.</p>
+    </div>
+  </body>
+</html>
